@@ -11,9 +11,11 @@ hostname = socket.gethostname()
 
 app = Flask(__name__)
 
+POOL = Redis.ConnectionPool(host=os.environ.get('REDIS_HOST'), port=6379, db=0)
+
 def get_redis():
     if not hasattr(g, 'redis'):
-        g.redis = Redis(host="redis", db=0, socket_timeout=5)
+        g.redis = Redis(connection_pool=POOL)
     return g.redis
 
 @app.route("/", methods=['POST','GET'])
