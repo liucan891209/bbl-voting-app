@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, make_response, g
-from redis import Redis
+from redis
 import os
 import socket
 import random
@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 def get_redis():
     if not hasattr(g, 'redis'):
-        g.redis = Redis(host=os.environ.get('REDIS_HOST'), port=6379, db=0)
+        g.redis = redis.StrictRedis(host=os.environ.get('REDIS_HOST'), port=6379, db=0)
     return g.redis
 
 @app.route("/", methods=['POST','GET'])
