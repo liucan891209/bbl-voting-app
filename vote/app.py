@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, make_response, g
-from redis
+import redis
 import os
 import socket
 import random
