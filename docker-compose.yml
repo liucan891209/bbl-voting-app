@@ -2,6 +2,8 @@ version: "2"
 
 services:
   result:
+    environment:
+      - PG_HOST
     build: ./result
     command: nodemon server.js
     volumes:
