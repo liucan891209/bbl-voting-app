@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 def get_redis():
     if not hasattr(g, 'redis'):
-        g.redis = redis.StrictRedis(host=os.environ.get('REDIS_HOST'), port=6379, db=0)
+        g.redis = redis.StrictRedis(host=os.getenv('REDIS_HOST', default='redis'), port=6379, db=0)
     return g.redis
 
 @app.route("/", methods=['POST','GET'])
